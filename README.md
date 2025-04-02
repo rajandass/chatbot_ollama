@@ -1,86 +1,57 @@
-# JavaScript Developer Chatbot
+# Local JavaScript Developer Chatbot
 
-A Streamlit-based chatbot application that acts as a JavaScript development assistant using Ollama and LangChain.
+A Streamlit-based chatbot that acts as a JavaScript developer using Ollama's local LLM.
 
-## Features
-
-- Interactive chat interface built with Streamlit
-- AI-powered responses using Ollama LLM
-- Persistent chat history across sessions
-- JavaScript development-focused assistance
-- Configurable model parameters
-- 
-## 🏗️ System Architecture
-
-### Mermaid Diagram
-```mermaid
-flowchart TD
-    User[User] <-->|Interacts with| UI[Streamlit UI]
-    UI -->|Sends query| App[Chatbot Application]
-    App -->|Stores/Retrieves| History[Chat History]
-    
-    subgraph Backend
-        App -->|Formats messages| LangChain[LangChain]
-        LangChain -->|API call| Ollama[Ollama]
-        Ollama -->|Returns response| LangChain
-    end
-
-    LangChain -->|Processes response| App
-    App -->|Displays response| UI
-    
-    style User fill:#f9f9f9,stroke:#333,stroke-width:2px
-    style UI fill:#d4f1f9,stroke:#333,stroke-width:2px
-    style App fill:#d5e8d4,stroke:#82b366,stroke-width:2px
-    style History fill:#ffe6cc,stroke:#d79b00,stroke-width:2px
-    style Backend fill:#f5f5f5,stroke:#666,stroke-width:1px,stroke-dasharray: 5 5
-    style LangChain fill:#e1d5e7,stroke:#9673a6,stroke-width:2px
-    style Ollama fill:#fff2cc,stroke:#d6b656,stroke-width:2px
-```
 ## Prerequisites
 
-- Python 3.8 or higher
-- Ollama installed and running
-- Required Python packages (see requirements.txt)
+- Python 3.8+
+- [Ollama](https://ollama.ai/)
 
-## Installation
+## Setup Instructions
 
-1. Clone the repository:
-```bash
-git clone [repository-url]
-cd localchat
-```
+1. **Install Ollama**
+   - Visit [Ollama.ai](https://ollama.ai/)
+   - Download and install Ollama for your operating system
+   - Start the Ollama service
 
-2. Install the required dependencies:
-```bash
-pip install -r requirements.txt
-```
+2. **Download the LLM Model**
+   ```bash
+   ollama pull llama3.2:1b
+   ```
 
-## Usage
+3. **Create Virtual Environment**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
 
-Run the chatbot using Streamlit:
-```bash
-streamlit run chatbot_ollama_ref.py
-```
+4. **Install Dependencies**
+   ```bash
+   pip install streamlit langchain-ollama
+   ```
 
-The application will start and open in your default web browser. You can then interact with the chatbot by typing your JavaScript-related questions in the chat input.
+## Running the Application
+
+1. **Start Ollama Service**
+   Make sure the Ollama service is running in the background
+
+2. **Launch the Chatbot**
+   ```bash
+   streamlit run chatbot_ollama.py
+   ```
+
+3. **Access the Application**
+   Open your browser and navigate to `http://localhost:8501`
 
 ## Configuration
 
-The chatbot uses the following default settings:
+The chatbot is configured with:
 - Model: llama3.2:1b
 - Temperature: 2
-- System Prompt: Acts as a JavaScript Developer
+- System Prompt: JavaScript Developer persona
 
-## Project Structure
+## Troubleshooting
 
-- `chatbot_ollama_ref.py`: Main application file with refactored code
-- `chatbot_ollama.py`: Original implementation
-- `requirements.txt`: Project dependencies
-
-## Contributing
-
-Feel free to submit issues and enhancement requests.
-
-## License
-
-[MIT License](LICENSE)
+- Ensure Ollama service is running before starting the application
+- Check if the model is properly downloaded using `ollama list`
+- Verify your Python environment has all required dependencies
