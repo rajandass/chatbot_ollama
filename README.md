@@ -10,9 +10,6 @@ A Streamlit-based chatbot application that acts as a JavaScript development assi
 - JavaScript development-focused assistance
 - Configurable model parameters
 
-## Architecture
-
-```mermaid
 flowchart TD
     User[User] <-->|Interacts with| UI[Streamlit UI]
     UI -->|Sends query| App[Chatbot Application]
@@ -34,7 +31,6 @@ flowchart TD
     style Backend fill:#f5f5f5,stroke:#666,stroke-width:1px,stroke-dasharray: 5 5
     style LangChain fill:#e1d5e7,stroke:#9673a6,stroke-width:2px
     style Ollama fill:#fff2cc,stroke:#d6b656,stroke-width:2px
-
 ## Prerequisites
 
 - Python 3.8 or higher
